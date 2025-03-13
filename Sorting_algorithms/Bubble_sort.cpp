@@ -4,7 +4,6 @@
 
 
 void bubbleSort(std::vector<int>& a) {
-    //size_t vecSize = a.size();
     for (size_t i = 0; i < a.size() - 1; i++) {
         bool swapped = false;
         for (size_t j = 0; j < a.size() - 1 - i; j++) {
@@ -12,7 +11,6 @@ void bubbleSort(std::vector<int>& a) {
                 std::swap(a[j], a[j + 1]);
                 swapped = true;
             }
-            
         }
         if (!swapped) {
             break;

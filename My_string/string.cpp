@@ -21,14 +21,12 @@ public:
         
         if (size >= 24) {
             str.def_str = new char[size + 1];
-            //strcpy(str.def_str, value);
             for (int i = 0; i < size; ++i) {
                 str.def_str[i] = value[i];
             }
             str.def_str[size] = '\0';
         }
         else {
-            //strcpy(str.str, value);
             for (int i = 0; i < size; ++i) {
                 str.str[i] = value[i];
             }
@@ -60,19 +58,16 @@ public:
 
             if (size >= 24) {
                 str.def_str = new char[size + 1];
-                //strcpy(str.def_str, other.str.def_str);
                 for (int i = 0; i < size; ++i) {
                     str.def_str[i] = other.str.def_str[i];
                 }
                 str.def_str[size] = '\0';
             }
             else {
-                //strcpy(str.str, other.str.str);
                 for (int i = 0; i < size; ++i) {
                     str.str[i] = other.str.str[i];
                 }
                 str.str[size] = '\0';
-                
                 str.def_str = nullptr;
             }        
         }
@@ -86,13 +81,11 @@ public:
             delete[]str.def_str;
             str.def_str = nullptr;
         }
-
         size = strlen(value);
 
         if (size >= 24)
         {
             str.def_str = new char[size + 1];
-            //strcpy(str.def_str, value);
             for (int i = 0; i < size; ++i) {
                 str.def_str[i] = value[i];
             }
@@ -100,7 +93,6 @@ public:
         }
         else
         {
-            //strcpy(str.str, value);
             for (int i = 0; i < size; ++i) {
                 str.str[i] = value[i];
             }
@@ -128,7 +120,6 @@ ostream& operator<<(ostream& out, const mystring& st)
 istream& operator>>(istream& in, mystring& st)
 {
     char buffer[200];
-
     in.getline(buffer, sizeof(buffer));
     st = buffer;
 

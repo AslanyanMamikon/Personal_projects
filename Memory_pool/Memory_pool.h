@@ -26,7 +26,6 @@ public:
         if (!newBlock) {
             throw std::bad_alloc();
         }
-        //pool.resize(blockSize * blockCount);
         pool.push_back(newBlock);
 
         for (size_t i = 0; i < poolSize; i++) {
@@ -49,17 +48,11 @@ public:
 
         Block* block = freeList;
         freeList = freeList->next;
-        return reinterpret_cast<T*> (block); // Block* tipi poxaren veradardzni T*
+        return reinterpret_cast<T*> (block);
     }
 
     void deallocate(T* ptr) {
         if (!ptr) return;
-
-        // Get the Block pointer from the data pointer
-        /*Block* block = reinterpret_cast<Block*>(
-            static_cast<char*>(ptr) - sizeof(Block)
-            );*/
-
         Block* block = reinterpret_cast<Block*> (ptr);
         block->next = freeList;
         freeList = block;
@@ -68,7 +61,6 @@ public:
     template<typename... Args>
     void construct(T* ptr, Args&&... args) {
         new(ptr) T(std::forward<Args>(args)...);
-        // new((void*)ptr) T(std::forward<Args>(args)...); // aveli apahov ?
     }
 
     void destroy(T* ptr) {

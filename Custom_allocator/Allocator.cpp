@@ -44,16 +44,12 @@ int main() {
     }
 
     Allocator<int>::rebind<double>::other doubleALL;
-    
     for(int i = 0; i < 5; i++) {
         std::cout << ptr[i] << " ";
     }
-    std::cout << std::endl;
-    
     for(int i = 0; i < 5; i++) {
         intAllocator.destroy(ptr + i);
     }
-    
     intAllocator.deallocate(ptr, 5);
     
     return 0;
